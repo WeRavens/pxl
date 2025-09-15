@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Learning JavaScript</h1>
+    <p>P x L calculator</p><hr>
+    <input type="text" id="panjang" placeholder="panjang">
+    <span>x</span>
+    <input type="text" id="lebar" placeholder="lebar">
+    <div class="result"></div>
+    <button onclick="luasPersegi()" id="jsTest">Test</button>
+  </div>
+  
+
+  <script src="javaScript.js"></script>
+  <script>
+    function luasPersegi() {
+      let panjang = parseFloat(document.getElementById("panjang").value);
+      let lebar = parseFloat(document.getElementById("lebar").value);
+      let result = document.getElementsByClassName("result")[0];
+      let now = new Date();
+      let jam = now.getHours();
+      let menit = now.getMinutes();
+
+      if (isNaN(panjang) || isNaN(lebar) || panjang <= 0 || lebar <= 0) {
+        result.textContent = "Invalid";
+        return;
+      }
+
+      let info = "";
+      if (jam >= 19) {
+        info = "malam";
+      } else if (jam >= 12) {
+        info = "siang";
+      } else {
+        info = "pagi";
+      }
+
+      let hasil = panjang * lebar;
+      result.textContent = `${info} ${jam}:${menit} Hasil: ${hasil}`;
+    }
+
+    function diDiskon(total, diskon) {
+      let final = total * (1 - diskon);
+      console.log(`Harga setelah diskon: ${final}`);
+    }
+    // Contoh pemanggilan fungsi diskon
+    diDiskon(120000, 0.1);
+  </script>
+</body>
+</html>
